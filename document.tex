@@ -1,0 +1,365 @@
+\documentclass[10pt,a4paper]{ctexart}
+\usepackage{ctex}
+\usepackage{titlesec}%调节标题格式
+\titleformat*{\section}{\zihao{3}\bfseries\centering}
+\titleformat*{\subsection}{\zihao{4}\bfseries}
+\titleformat*{\subsubsection}{\zihao{4}\bfseries}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{pifont}
+\renewcommand\thefootnote{\ding{\numexpr171+\value{footnote}}}
+\newcommand\Emph{\textbf}
+\usepackage{amssymb}
+\usepackage{makeidx}
+\usepackage{graphicx}
+\graphicspath{{figures/}}%figures环境
+\usepackage{float}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage[section]{placeins}
+\usepackage{geometry}
+\geometry{hcentering}
+\geometry{left=2cm,right=2cm,top=3cm,bottom=3cm}%设置左右页边距
+\setcounter{secnumdepth}{4}%设置目录标题深度为4
+\setcounter{tocdepth}{4}
+\usepackage{color}
+\usepackage{tabularray}
+\usepackage{hyperref}
+\begin{document}
+	\begin{titlepage}
+\centering
+\zihao{1}鼠鼠的材力期末\protect\footnotemark%脚注符号与内容分开，这是脚注符号
+\\
+\vspace*{\baselineskip}
+\zihao{-4}by:一只学土木的鼠鼠
+	\footnotetext{edited by \LaTeX}%脚注符号与内容分开，这是脚注内容
+	\newpage
+	\end{titlepage}
+ %\setlength{\parindent}{0pt}%取消所有段落首行缩进
+ \noindent%取消该段首行缩进
+ \zihao{1}前面的话
+
+\vspace*{1ex}%设置段落间的垂直间距
+\zihao{-4}这个材料力学的期末小册子是基于孙训方的《材料力学（\uppercase\expandafter{\romannumeral1}%这罗马数字也太tm难打了吧
+ ）》（第五版）\cite{孙训方2009}
+ 整理出来的，纯粹是鼠鼠为了期末复习和顺便重拾\LaTeX 而整理，如有真正想学好材料力学的朋友建议啃书本，鼠鼠只是想期末及格。
+ 
+ 而且这玩意儿我预感会通篇公式，几乎没有图片。本来鼠鼠是打算给必要的地方放上Axglyph、PowerPoint等软件画的矢量图，但实际操作还是不熟悉。等后面鼠鼠有时间了会捣鼓捣鼓\LaTeX 写论文的工作流，会给这篇加上矢量图的。
+\thispagestyle{empty}%不标出页码
+ \newpage
+\tableofcontents
+\setcounter{page}{0}%页码标记为0
+\thispagestyle{empty}
+\newpage
+\setcounter{secnumdepth}{-1}%设置section章节不标号
+\section{第一章：绪论及基本概念}
+PS：经典大学课本第一章绪论。鼠鼠暂时没看到有什么重点，看到了鼠鼠会补充
+\section{第二章：轴向拉伸和压缩}
+这章可以说是材料力学中基础中的基础，第二节的截面法求轴力和画截面图更是后面所有内容的根基。
+\subsection{轴力及轴力图}
+轴力即作用线与杆轴线重合的力。在我们所学的范围内，杆件所受的拉力和压力绝大多数为轴力。\textcolor{red}{符号规定：}拉力为正，压力为负，一般计算先设为正，如果计算为负即为压力。
+
+\textcolor{cyan}{截面法画轴力图：}三步走：截开、代替（用内力代替弃去部分）、平衡
+可能会出大题，比较简单：先整体受力分析求支反力（求外力），再用截面法求内力（有时候右边比左边好算，具体情况具体分析），作图即可。
+\subsection{应力}
+应力分两种：正应力和切应力，正应力引发长度的改变，切应力引发角度的改变。本章主要是正应力的计算，其实可以完全把正应力当作压强看待，其计算公式为
+\begin{equation}
+	\sigma=\frac{F_N}{A}
+	\label{zyl}
+\end{equation}
+单位为Pa，其中A为横截面面积。符号与轴力保持一致（拉正压负）。
+
+切引力的\textcolor{red}{符号规定}要注意：对截面一点产生顺时针力矩的切应力为正，反之为负。
+
+当发生\textcolor{red}{轴向拉压}时，斜截面上的正应力和切应力有公式解决，先如图示（不得不画图了）
+\begin{figure}[htp]%设置figure环境
+	\centering
+	\includegraphics[width = 8cm ]{xjm}
+\end{figure}
+
+公式如下
+
+\begin{equation}
+	\begin{cases}
+		\sigma_\alpha=p_\alpha cos\alpha =\sigma_0 cos^2\alpha\\
+		\tau_\alpha=p_\alpha sin\alpha  = \frac{\sigma_0}{2}sin2\alpha
+	\end{cases}
+\end{equation}
+
+$\sigma_0=\frac{F}{A}$是拉杆在横截面($\alpha=0$)上的正应力，由公式知切应力的最大值在与轴线成$45^{\circ}$角的斜截面上，大小为$\tau_{max}=\frac{\sigma}{2}$
+\subsection{许用应力}
+简单说就是杆件所受最大应力不应超过许用应力，公式为
+\begin{equation}
+	\sigma_{max}\leqslant\left[\sigma\right]%数学环境打出括号
+\end{equation}
+\par 若为轴向拉压，加上正应力公式，即公式\ref{zyl}%交叉引用的命令是ref，别忘了
+\begin{equation}
+	\sigma_{max}=\frac{F_{N,max}}{A}\leqslant\left[\sigma\right]
+\end{equation}
+\par
+由它可以得到强度计算的三种类型：
+
+\begin{table}[h]
+	\centering
+	\begin{tblr}{|c|c|}%好好看看tabularray是怎么用的
+		\hline
+		强度校核 & $\sigma_{max}=\frac{F_{N,max}}{A}\leqslant\left[\sigma\right]$ \\
+		\hline
+		截面选择 & $A\geqslant\frac{F_{N,max}}{\left[\sigma\right]}$\\
+		\hline
+		计算许可负载 & $F_{N,max}=A\left[\sigma\right]$\\
+		\hline
+	\end{tblr}
+\end{table}
+
+
+\subsection{横向线应变、纵向线应变、泊松比及胡克定律}
+别管别的，把横纵向的区别搞清楚先：
+\begin{figure}[htp]%设置figure环境
+	\centering
+	\includegraphics[width = 6cm ]{hzx}
+\end{figure}
+
+\textcolor{cyan}{线应变}为单位长度上的伸长和缩短（压缩和膨胀）。由定义得纵向线应变$\varepsilon$和横向线应变$\varepsilon'$为
+\begin{equation}
+\varepsilon=\frac{\Delta l}{l} \qquad%两公式间间隔
+  \varepsilon'=\frac{\Delta l}{l}
+\end{equation}
+
+线应变的\textcolor{red}{符号规定}要注意：纵向伸长为正反之为负；横向压缩为正反之为负。
+
+\textcolor{cyan}{泊松比}（横向变形因数）为\textcolor{red}{横向线应变$\varepsilon'$}与\textcolor{red}{纵向线应变之$\varepsilon$}之比（别比反了！），数值随材料而异。
+\begin{equation}
+ \nu=\frac{\varepsilon'}{\varepsilon} \Rightarrow \varepsilon'=-\nu \varepsilon
+ \label{psb}
+\end{equation}
+
+\textcolor{cyan}{胡克定律}的原始表达式为:
+\begin{equation}
+\Delta l=\frac{F_N l}{EA}
+\label{hkdl}
+\end{equation}
+
+其中E被称作材料的弹性模量，数值随材料而定。EA被称作杆件的拉伸（压缩）刚度，是衡量杆件抗拉（压）变形能力的，越大越强。
+
+由公式\ref{psb}、\ref{hkdl},得胡克定律的应力-应变表达式：
+\begin{equation}
+\sigma=E\varepsilon
+\end{equation}
+\subsection{弹性应变能及弹性应变能密度}
+\textcolor{cyan}{弹性应变能}为弹性体所受力而变形时所积蓄的能量。表达式为：
+\begin{equation}
+	V_{\varepsilon}=\frac{F^2_N l}{2EA}
+\end{equation}
+
+联立公式\ref{hkdl}，得：
+\begin{equation}
+	V_{\varepsilon}=\frac{EA}{2l}\Delta l^2
+\end{equation}
+
+\textcolor{cyan}{弹性应变能密度}为单位体积的弹性应变能，即：
+\begin{equation}
+	v_{\varepsilon}=\frac{V_{\varepsilon}}{V}=\frac{\frac{1}{2}F\Delta l}{Al}=\frac{1}{2}\sigma\varepsilon
+\end{equation}
+
+联立公式\ref{hkdl}，得：
+\begin{equation}
+	v_{\varepsilon}=\frac{E\varepsilon^2}{2}=\frac{\sigma^2}{2E}
+\end{equation}
+	 
+\subsection{材料在拉伸和压缩时的力学性能}
+这节就两理解性的公式，后面全是过程叙述，鼠鼠捡几个重点稍微说说。
+
+\textcolor{cyan}{伸长率}$\delta$和\textcolor{cyan}{断面收缩率}$\psi$的公式为
+\begin{equation}
+	\delta=\frac{l_1-l}{l}\times 100\% \qquad \psi=\frac{A-A_1}{A}\times 100\%
+\end{equation}
+
+通常$\delta>5\%$的材料被称为\textcolor{cyan}{塑性材料}，$\delta<5\%$的材料被称为\textcolor{cyan}{脆性材料}。
+
+力学性能为材料受力时在强度和变形方面所表现出来的性能。
+
+在\textcolor{cyan}{低碳钢的拉伸实验}中，由应力-伸长量图像可将拉伸过程分为四个阶段，如图所示：
+\begin{figure}[htp]%设置figure环境
+	\centering
+	\includegraphics[width = 8cm ]{dtgls}
+\end{figure}
+
+\uppercase\expandafter{\romannumeral1}为\textcolor{red}{弹性阶段}，满足胡克定律，比例极限$\sigma_p$对应点A（请自行放大，确实不太清楚），弹性极限$\sigma_e$对应点B。两者区别在于弹性极限是在弹性范围内的，即形变可以完全恢复；但比例极限是有可能超过了弹性形变的范围，仅仅是数值上符合胡克定律\cite{匿名用户2017}。
+
+\uppercase\expandafter{\romannumeral2}为\textcolor{red}{屈服阶段}，此阶段应变显著增加，但应力基本不变（屈服现象）。屈服极限$\sigma_s$对应D点。
+
+\uppercase\expandafter{\romannumeral3}为\textcolor{red}{强化阶段}，此阶段材料抵抗变形的能力有所增强。强度极限$\sigma_b$对应点G，为最大名义应力。
+
+\uppercase\expandafter{\romannumeral4}为\textcolor{red}{局部变形阶段}，试件上出现急剧的局部横截面收缩现象（颈缩现象），直至试件断裂。
+
+\textcolor{cyan}{冷作硬化现象}指在强化阶段卸载后，材料的比例极限提高，塑性降低的现象。过程不再详细叙述，只需记住这样后比例极限$\sigma_p$提高，塑性变形降低，强度极限$\sigma_b$不变。
+
+后面（课本P33及以后）就是一堆没什么规律的文字叙述了。自己看看书，鼠鼠在这里不做赘述。
+
+\subsection{应力集中（概念）}
+\textcolor{cyan}{应力集中}指杆件突然变化而引起的应力局部骤然增大的现象。用\textcolor{cyan}{理论应力集中系数}$K_{t\sigma}$描述应力集中程度：
+\begin{equation}
+	K_{t\sigma}=\frac{\sigma_{max}}{\sigma_{nom}}
+\end{equation}
+
+其中$\sigma_{max}$为杆件外形局部不规则处的最大局部应力，$\sigma_{nom}$为横截面的平均应力。
+
+考虑应力集中的情况如下表所示：
+\begin{table}[h]
+	\centering
+	\begin{tblr}{|c|c|}%好好看看tabularray是怎么用的
+		\hline
+		不考虑应力集中 & 塑性材料、静荷载；非均匀的脆性材料，如铸铁\\
+		\hline
+		考虑应力集中 & 均匀的脆性材料或塑性差的材料；动荷载\\
+		\hline	
+	\end{tblr}
+\end{table}
+\newpage
+
+\section{附录\uppercase\expandafter{\romannumeral1}：截面的几何性质}
+本章涉及大量的公式推导及数学计算，鼠鼠为追求短平快在此只列出必要的定义、公式及结论。对公式推导感兴趣的话可以翻翻书本。
+
+\subsection{静矩和形心位置}
+先上图：
+\begin{figure}[htp]%设置figure环境
+	\centering
+	\includegraphics[width = 6cm ]{jjxx}
+\end{figure}
+
+\textcolor{cyan}{静矩}（单位：$m^3$、$mm^3$）的定义式为：
+\begin{equation}
+	\begin{cases}
+		S_x=\int_A ydA\\
+		S_y=\int_A xdA
+	\end{cases}
+\label{jj}
+\end{equation}
+
+\textcolor{cyan}{形心坐标公式}为：
+\begin{equation}
+	\begin{cases}
+		\bar{x}=\frac{\int_A ydA}{A}\\
+		\bar{y}=\frac{\int_A xdA}{A}
+	\end{cases}
+	\label{xx}
+\end{equation}
+
+由公式\ref{jj}、\ref{xx}，得
+	\begin{gather}%多行公式用gather环境
+	\bar{x}=\frac{S_y}{A} \Rightarrow S_y=A\bar{x}\\	
+	\bar{y}=\frac{S_X}{A} \Rightarrow S_x=A\bar{y}
+	\end{gather}
+
+实际题目中出现的比较多的是规则图形组合截面的静矩和形心坐标，由定义式易得：
+\begin{gather}
+	S_x=\sum_{i=1}^n A_i\bar{y}_i \qquad S_y=\sum_{i=1}^n A_i\bar{x}_i\\
+	\bar{x}=\frac{\sum\limits_{i=1}^n A_i\bar{y}_i}{\sum\limits_{i=1}^n A_i} \qquad \bar{y}=\frac{\sum\limits_{i=1}^n A_i\bar{x}_i}{\sum\limits_{i=1}^n A_i}
+\end{gather}	
+		
+\subsection{极惯性矩、惯性矩和惯性积}
+先上图：
+\begin{figure}[htp]%设置figure环境
+	\centering
+	\includegraphics[width = 6cm ]{jgxj}
+\end{figure}
+
+\textcolor{cyan}{极惯性矩}（单位：$m^4$、$mm^4$，对点）的定义式为：
+\begin{equation}
+	I_p=\int_A\rho^2dA
+	\label{jgxj}
+\end{equation}
+
+可由公式\ref{jgxj}推导出实心圆和空心圆对圆心O的极惯性矩为：
+\begin{figure}[htp]%设置figure环境
+	\centering
+	\includegraphics[width = 12cm ]{2gy}
+\end{figure}
+
+\begin{equation}%\mbox用于在equation环境下加中文
+\mbox{实心圆：} I_p=\frac{\pi D^4}{32} \qquad \mbox{空心圆：} I_p=\frac{\pi}{32}(D^4-d^4)
+\end{equation}
+
+\textcolor{cyan}{惯性矩}（单位：$m^4$、$mm^4$，对轴）的定义式为：
+\begin{equation}
+\begin{cases}
+I_x=\int_A y^2dA\\
+I_y=\int_A x^2dA
+\end{cases}
+\label{gxj}
+\end{equation}
+
+由公式\ref{jgxj}、\ref{gxj}知：
+\begin{equation}
+	I_p=\int_A(x^2+y^2)dA=I_x+I_y
+\end{equation}
+
+即截面对一点的极惯性矩，等于截面对以该点为原点的任意两正交坐标轴的惯性矩之和。
+
+可由公式\ref{gxj}推导出矩形和平行四边形对其形心轴的惯性矩为：
+\begin{figure}[htp]%设置figure环境
+	\centering
+	\includegraphics[width = 12cm ]{2g4}
+\end{figure}
+\begin{equation}
+	I_x=\frac{bh^3}{12} \qquad I_y=\frac{hb^3}{12}
+\end{equation}
+
+圆对其形心轴的惯性矩为：
+\begin{figure}[htp]%设置figure环境
+	\centering
+	\includegraphics[width = 6cm ]{y}
+\end{figure}
+\begin{equation}
+	I_x=I_y=\frac{\pi D^4}{64}
+\end{equation}
+
+\textcolor{cyan}{惯性积}(单位：$m^4$、$mm^4$，对两轴)的定义式为：
+\begin{equation}
+I_{xy}=\int_A xydA
+\end{equation}
+
+\textcolor{cyan}{惯性半径}的定义式为：
+\begin{equation}
+i_x=\sqrt{\frac{I_x}{A}} \qquad i_y=\sqrt{\frac{I_y}{A}}
+\end{equation}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\newpage
+%参考文献
+\bibliographystyle{unsrt}%这个style根据引用顺序，plain根据作者姓名排序
+
+\bibliography{document}
+
+
+
+\end{document}
