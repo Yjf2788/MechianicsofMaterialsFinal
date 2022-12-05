@@ -1,5 +1,8 @@
 # MechianicsofMaterials
 鼠鼠用LaTeX制作的材力期末小册子，会持续更新
+
 需要编译tex文件记得把figures压缩包解压，把里面的pdf文件放到创建的figures文件夹，记住文件夹要和tex文件在同一目录中
+
 鼠鼠好像不太会markdown欸
+
 摆烂.jpg
