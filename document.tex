@@ -280,6 +280,7 @@ $\sigma_0=\frac{F}{A}$是拉杆在横截面($\alpha=0$)上的正应力，由公�
 
 \begin{equation}%\mbox用于在equation环境下加中文
 \mbox{实心圆：} I_p=\frac{\pi D^4}{32} \qquad \mbox{空心圆：} I_p=\frac{\pi}{32}(D^4-d^4)
+\label{yjgxj}
 \end{equation}
 
 \textcolor{cyan}{惯性矩}（单位：$m^4$、$mm^4$，对轴）的定义式为：
@@ -305,6 +306,7 @@ I_y=\int_A x^2dA
 \end{figure}
 \begin{equation}
 	I_x=\frac{bh^3}{12} \qquad I_y=\frac{hb^3}{12}
+	\label{jg}
 \end{equation}
 
 圆对其形心轴的惯性矩为：
@@ -314,6 +316,7 @@ I_y=\int_A x^2dA
 \end{figure}
 \begin{equation}
 	I_x=I_y=\frac{\pi D^4}{64}
+	\label{yg}
 \end{equation}
 
 \textcolor{cyan}{惯性积}(单位：$m^4$、$mm^4$，对两轴)的定义式为：
@@ -326,20 +329,248 @@ I_{xy}=\int_A xydA
 i_x=\sqrt{\frac{I_x}{A}} \qquad i_y=\sqrt{\frac{I_y}{A}}
 \end{equation}
 
+\textcolor{cyan}{惯性矩和惯性积的平行移轴公式}为：
+\begin{figure}[htp]%设置figure环境
+	\centering
+	\includegraphics[width = 4.1cm ]{pxyz}
+\end{figure}
 
+\begin{equation}
+	\begin{cases}
+		I_x=I_{x_c}+a^2A\\
+		I_y=I_{y_c}+b^2A\\
+		I_{xy}=I_{x_cy_c}+abA
+	\end{cases}
+\end{equation}
 
+\textcolor{cyan}{组合截面的惯性矩（或惯性积）}等于其各组成部分对同一坐标轴的惯性矩（或惯性积）之和。即：
+\begin{equation}
+	\begin{cases}
+		I_x=\sum\limits_{i=1}^n I_{x_i}\\
+		I_y=\sum\limits_{i=1}^n I_{y_i}\\
+		I_xy=\sum\limits_{i=1}^n I_{x_iy_i}
+	\end{cases}
+\end{equation}
+\newpage
+\section{第三章：扭转}
+本章开始就有点抽象了，鼠鼠们做好被薄纱的准备（bushi）。
 
+\subsection{传动轴的外力偶矩}
+传动轴的转速n(r/min)、功率P(kW)及在其上作用的\textcolor{cyan}{外力偶矩}$M_e$(N$\cdot$m)之间的关系为：
 
+\begin{figure}[htp]%设置figure环境
+	\centering
+	\includegraphics[width = 8cm ]{dl}
+\end{figure}
 
+\begin{equation}
+	M_e=9550\frac{P}{n}
+\end{equation}
 
+\subsection{扭矩及扭矩图}
+\textcolor{cyan}{扭矩}T指圆轴受纽时其截面上的内力偶矩。
 
+注意扭矩的\textcolor{red}{符号规定}：
+\begin{figure}[htp]%设置figure环境
+	\centering
+	\includegraphics[width = 8cm ]{njfh}
+\end{figure}
 
+T的大小依然可以用截面法确定，三步走：截开、代替及平衡。
 
+有了大小和正负，就可以按照轴力图的方法做出扭矩图，不再细锁。
 
+\subsection{薄壁圆筒的扭转}
+本节鼠鼠复习了半天也没完全整明白，课后老师也没有留作业，鼠鼠暂且认为本节内容不算重点，但却是后面等直圆杆的基础，而等直圆杆是重点中的重点。
 
+\begin{figure}[htp]%设置figure环境
+	\centering
+	\includegraphics[width = 10cm ]{bbyt}
+\end{figure}
 
+薄壁圆筒受扭时，两端界面之间相对转过的圆心角被称为\textcolor{cyan}{相对扭转角}$\varphi$。表面上正方格子倾斜的角度，即直角的改变量被称为\textcolor{cyan}{切应变}$\gamma$，如上图所示：
 
+由几何关系（鼠鼠没搞懂这几何关系怎么来的，书上也没仔细说QAQ）得：
+\begin{equation}
+	\gamma=\frac{\varphi r}{l}
+\end{equation}
 
+通过一系列数学推导，可得出\textcolor{cyan}{薄壁圆筒横截面上切应力计算公式}得：
+\begin{figure}[htp]%设置figure环境
+	\centering
+	\includegraphics[width = 8cm ]{bbqyl}
+\end{figure}
+\begin{equation}
+	\tau=\frac{T}{r_oA}=\frac{T}{2\pi r_o^2\delta}
+\end{equation}
+
+通过实验得到\textcolor{cyan}{剪切胡克定律}：当外力偶矩在某一范围内时，相对扭转角$\varphi$与外力偶矩$M_e$,(在数值上等于扭矩T)之间成正比，即：
+\begin{equation}
+	\tau=G\gamma
+	\label{jq}
+\end{equation}
+
+G（单位：Pa）被称为材料的切变模量。
+
+\subsection{等直圆杆的扭转}
+先上图：
+\begin{figure}[htp]%设置figure环境
+	\centering
+	\includegraphics[width = 8cm ]{dzyg}
+\end{figure}
+
+刚刚写了很多我觉得必要的公式推导，想想还是删掉了。因为这并不符合我写这玩意儿的初衷。
+
+当等直圆杆受扭时，横截面周边上各点处切应力最大，即\textcolor{cyan}{等直圆杆最大切应力公式}为：
+\begin{equation}
+	\tau_{max}=\frac{Tr}{I_p}
+\end{equation}
+
+$r$代表横截面半径，$I_p$代表横截面的极惯性矩，$T$代表横截面上的扭矩。
+
+若用$W_p$代表$I_p/r$，则有：
+\begin{equation}
+\tau_{max}=\frac{T}{W_p}
+\end{equation}
+
+$W_p$被称作\textcolor{cyan}{扭转截面系数}，单位为$m^3$
+
+鼠鼠觉得可以先背两个圆的极惯性矩结论，即公式\ref{yjgxj}，$W_p$只需除以其半径即可。故不再赘述。
+
+\textcolor{cyan}{相对扭转角}$\varphi$为：
+\begin{equation}
+	\varphi=\frac{Tl}{GI_p}
+	\label{nzj}
+\end{equation}
+
+其中$l$为两横截面之间的距离，$G$为材料的切变模量。
+
+和轴向拉压一样，扭转时杆件内也会积蓄\textcolor{cyan}{应变能}，为：
+
+\begin{equation}
+	V_\varepsilon=\frac{T^2l}{2GI_p}
+\end{equation}
+
+联立公式\ref{nzj}，得：
+\begin{equation}
+	V_\varepsilon=\frac{GI_p}{2l}\varphi^2
+\end{equation}
+
+\subsection{切应力互等定理}
+直接给结论，这部分证明鼠鼠一头雾水QAQ。
+\begin{figure}[htp]%设置figure环境
+	\centering
+	\includegraphics[width =6cm ]{hddl}
+\end{figure}
+
+\textcolor{cyan}{切应力互等定理}指两相互垂直平面上的切应力$\tau$和$\tau'$数值相等，且均指向（或背离）该两平面的交线。
+
+\subsection{斜截面上应力公式}
+经过一系列证明，得\textcolor{cyan}{斜截面上应力公式}QAQ：
+\begin{figure}[htp]%设置figure环境
+	\centering
+	\includegraphics[width =10cm ]{xjmq}
+\end{figure}
+
+\begin{equation}
+	\sigma_{\alpha}=-\tau sin2\alpha \qquad \tau_{\alpha}=\tau cos2\alpha
+\end{equation}
+
+由上述公式易知：
+
+\begin{tblr}{l}
+	1、& 单元体的四个侧面($\alpha=0^{\circ}$和$\alpha=90^{\circ}$)上切应力的绝对值最大\\
+	2、&
+	$\alpha=-45^{\circ}$和$\alpha=+45^{\circ}$截面上切应力为零，而正应力绝对值最大，其值为：\\
+\end{tblr}
+\begin{equation}
+	\sigma_{-45^{\circ}}=\sigma_{max}=+\tau \qquad
+	\sigma_{+45^{\circ}}=\sigma_{min}=-\tau
+\end{equation}
+
+\newpage
+
+\section{第四章：弯曲应力}
+本章可能看起来比扭转直观，但实际计算比扭转可要复杂多了，计算一直是鼠鼠的软肋$\cdots \cdots$扯远了哈哈，本章的重点在剪力图和弯矩图（后面简称“双图”）的画法及正切应力的计算。双图的两种画法里第二种利用规律及微分关系更重要，但第一种列剪力弯矩方程的方法也要知道。鼠鼠会在篇幅中加以体现。
+
+\subsection{剪力和弯矩·剪力图和弯矩图}
+如果说轴力是纵向内力，那么剪力就是横向内力（这个说法不甚严谨，但是对我们理解剪力挺有帮助的）。如下图所示（虚线部分为截面法截去部分）：
+\begin{figure}[htp]%设置figure环境
+	\centering
+	\includegraphics[width =10cm ]{jlwj}
+\end{figure}
+
+和轴力一样，\textcolor{cyan}{剪力}$F_S$和横向外力$F_A$相平衡。而\textcolor{cyan}{弯矩}$M$与$F_A$和$F_S$所形成的力矩相平衡。
+
+剪力和弯矩的\textcolor{red}{符号规定}就尤为重要了：课本上的文字规定略显生涩，咱直接看图：
+
+\begin{figure}[htp]%设置figure环境
+	\centering
+	\includegraphics[width =8cm ]{wjfh}
+\end{figure}
+
+对于剪力的符号：左上右下为正，左下右上为负（可用顺时针与逆时针简记，如红色旋转符号所示，注意这只是简记符号，不是力矩方向）。因为平时做题我们一般都会用到截面法，去掉截取部分后看剪力在所留部分的哪边，按照上面的符号规定定符号。
+
+对于弯矩的符号就比较简单了：画完剪力方向，把剪力方向往反方向一拉就是弯矩方向。下侧受拉为正，上侧受拉为负。研究对象同样是所留部分。
+
+对于它俩的计算，三个字：截面法，不做赘述。
+
+双图的画法前面提到过：第一种就是就是借助截面法求剪力弯矩方程做函数图像，这个方法咱看看课本上例题理解下过程就行，遇到复杂的弯曲情况计算量就太大了。下面鼠鼠详细聊聊第二种：
+
+首先，我们通过一系列的数理过程得到荷载$q$、剪力$F_S$和弯矩$M$之间的微分关系为：
+\begin{equation}
+	q=\frac{dF_S}{x} \qquad F_S=\frac{dM}{dx}
+\end{equation}
+
+由上述微分关系易得荷载的积分就是剪力，剪力的积分就是弯矩。那么我们的作图步骤就很明晰了，一般题目给的就是荷载，我们先做出剪力图，就可以通过剪力图得到弯矩图的变化规律。具体如图：
+\begin{figure}[htp]%设置figure环境
+	\centering
+	\includegraphics[width =18cm ]{jwtgl}
+\end{figure}
+
+这里强调两点：
+
+\begin{tblr}{l}
+	1.&双图都是从左端0开始，右端0结束\\
+	2.&弯矩图是正在下，负在上
+\end{tblr}
+
+\subsection{弯曲正应力及强度条件}
+首先先交代清楚。下面的公式从严格的数理证明来说仅适用于剪力为零，弯矩为常量的梁的情况（即纯弯曲情况）。但在工程实践中在特殊情况下（一般题目也会满足这个情况）其计算既有剪力又有弯矩的梁（即横力弯曲情况）误差是满足工程中的精度要求的。
+
+\begin{figure}[htp]%设置figure环境
+	\centering
+	\includegraphics[width =10cm ]{zxz}
+\end{figure}
+
+弯曲变形时，由于变形的连续性，中间必有一层纵向线无长度改变，称为\textcolor{cyan}{中性层}，中性层和横截面的交线称为\textcolor{cyan}{中性轴}。如上图所示：
+
+经过一系列的数理证明，得\textcolor{cyan}{横截面上的任一点处的正应力}$\sigma$为：
+\begin{equation}
+	\sigma=\frac{My}{I_z}}
+\end{equation}
+
+其中$M$是横截面上的弯矩；$I_z$是横截面对中性轴z的惯性矩；$y$为求应力点的纵坐标。
+
+由上式知，当$y$达到最大时，$\sigma$最大，即：
+\begin{equation}
+	\sigma_{max}=\frac{My_{max}}{I_z}}
+\end{equation}
+
+若令$W_z=I_z/y_{max}$，有
+\begin{equation}
+	\sigma_{max}=\frac{M}{W_z}}
+\label{wz}
+\end{equation}
+
+$W_z$被称为\textcolor{cyan}{弯曲截面系数}，同扭转截面系数一样，鼠鼠还是觉得可以先背矩形和圆的惯性矩，即公式\ref{jg}、\ref{yg}，分别除去$h/2$、$D/2$即可得到$W_z$。
+
+弯曲正应力强度条件即为最大工作正应力$\sigma_{max}$不得超过材料的需用弯曲正应力$\left[\sigma\right]$，即$\sigma_{max}\leqslant\left[\sigma\right] $，由公式\ref{wz}得：
+\begin{equation}
+       \frac{M_{max}}{W_z}}\leqslant\left[\sigma\right]
+\end{equation}
+
+\subsection{弯曲切应力及强度条件}
 
 
 
