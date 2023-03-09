@@ -25,7 +25,7 @@
 \setcounter{tocdepth}{4}
 \usepackage{color}
 \usepackage{tabularray}
-\usepackage{hyperref}
+\usepackage{hyperref}%加高亮框框，但容易和其他包冲突，故放在后面
 \begin{document}
 	\begin{titlepage}
 \centering
@@ -46,15 +46,24 @@
  整理出来的，纯粹是鼠鼠为了期末复习和顺便重拾\LaTeX 而整理，如有真正想学好材料力学的朋友建议啃书本，鼠鼠只是想期末及格。
  
  而且这玩意儿我预感会通篇公式，几乎没有图片。本来鼠鼠是打算给必要的地方放上Axglyph、PowerPoint等软件画的矢量图，但实际操作还是不熟悉。等后面鼠鼠有时间了会捣鼓捣鼓\LaTeX 写论文的工作流，会给这篇加上矢量图的。
+ 
+ 鼠鼠来打脸啦，本来想着就整理点公式就结束，结果有些地方是不得不放上图片，不然很多点真的不好理解。大概有一半的图是鼠鼠自己使用Axglyph做的矢量图（鼠鼠尽量做得好看点），其他的图片都是老师们的PPT截取下来的图片，这里非常感谢哈斯亚提·哈里丁\cite{哈斯亚提·哈里丁2022}老师和赵文\cite{赵文}老师的教学和课件内容让这本小册子迸发出新的活力，还有b站up主@土木光头强\cite{b站up主@土木光头强}老师的精彩的教学视频让我受益匪浅。
+ 
+ 再说一点，这里面很多的内容其实并非出自课本，而是通过鼠鼠自己的理解加进去的俏皮话，便于理解。但这样很可能会出现用词不恰当，定义不严谨的情况，鼠鼠觉得严谨的学术用语和便于理解的大白话还是存在差异的。但是对于这篇用语并不严谨的期末小册子，鼠鼠尽量会在每个公式前加上该公式的适用条件，毕竟考试时公式都用错了鼠鼠这敲了这俩星期的代码算是白忙活了。
+ 
+ 遗憾的是，本书的第八章和第九章没有时间整理了，鼠鼠还有一周多的时间就考试了，现在刚整理完第七章还有几张CAD期末作业没画QAQ，不说了，鼠鼠画图去了。
 \thispagestyle{empty}%不标出页码
  \newpage
+\thispagestyle{empty}%放在插入目录前
 \tableofcontents
-\setcounter{page}{0}%页码标记为0
 \thispagestyle{empty}
+\setcounter{page}{0}
 \newpage
 \setcounter{secnumdepth}{-1}%设置section章节不标号
 \section{第一章：绪论及基本概念}
-PS：经典大学课本第一章绪论。鼠鼠暂时没看到有什么重点，看到了鼠鼠会补充
+P.S.：经典大学课本第一章绪论。鼠鼠暂时没看到有什么重点，看到了鼠鼠会补充
+
+P.P.S.:这册子里\textcolor{red}{出现在正文里的所有公式号}都能点击直达哦，打印出来的当我没说
 \section{第二章：轴向拉伸和压缩}
 这章可以说是材料力学中基础中的基础，第二节的截面法求轴力和画截面图更是后面所有内容的根基。
 \subsection{轴力及轴力图}
@@ -108,7 +117,7 @@ $\sigma_0=\frac{F}{A}$是拉杆在横截面($\alpha=0$)上的正应力，由公�
 		\hline
 		截面选择 & $A\geqslant\frac{F_{N,max}}{\left[\sigma\right]}$\\
 		\hline
-		计算许可负载 & $F_{N,max}=A\left[\sigma\right]$\\
+		计算许可负载 & $F_{N,max}\leqslant A\left[\sigma\right]$\\
 		\hline
 	\end{tblr}
 \end{table}
@@ -125,6 +134,7 @@ $\sigma_0=\frac{F}{A}$是拉杆在横截面($\alpha=0$)上的正应力，由公�
 \begin{equation}
 \varepsilon=\frac{\Delta l}{l} \qquad%两公式间间隔
   \varepsilon'=\frac{\Delta l}{l}
+  \label{dy}
 \end{equation}
 
 线应变的\textcolor{red}{符号规定}要注意：纵向伸长为正反之为负；横向压缩为正反之为负。
@@ -143,7 +153,7 @@ $\sigma_0=\frac{F}{A}$是拉杆在横截面($\alpha=0$)上的正应力，由公�
 
 其中E被称作材料的弹性模量，数值随材料而定。EA被称作杆件的拉伸（压缩）刚度，是衡量杆件抗拉（压）变形能力的，越大越强。
 
-由公式\ref{psb}、\ref{hkdl},得胡克定律的应力-应变表达式：
+由公式\ref{dy}、\ref{hkdl},得胡克定律的应力-应变表达式：
 \begin{equation}
 \sigma=E\varepsilon
 \end{equation}
@@ -229,7 +239,7 @@ $\sigma_0=\frac{F}{A}$是拉杆在横截面($\alpha=0$)上的正应力，由公�
 	\includegraphics[width = 6cm ]{jjxx}
 \end{figure}
 
-\textcolor{cyan}{静矩}（单位：$m^3$、$mm^3$）的定义式为：
+\textcolor{cyan}{静矩}（单位：$m^3$、$mm^3$，对轴）的定义式为：
 \begin{equation}
 	\begin{cases}
 		S_x=\int_A ydA\\
@@ -532,7 +542,7 @@ $W_p$被称作\textcolor{cyan}{扭转截面系数}，单位为$m^3$
 
 \begin{tblr}{l}
 	1.&双图都是从左端0开始，右端0结束\\
-	2.&弯矩图是正在下，负在上
+	2.&弯矩图是正在下，负在上（土木是这样的，机械貌似是反过来的）
 \end{tblr}
 
 \subsection{弯曲正应力及强度条件}
@@ -547,30 +557,238 @@ $W_p$被称作\textcolor{cyan}{扭转截面系数}，单位为$m^3$
 
 经过一系列的数理证明，得\textcolor{cyan}{横截面上的任一点处的正应力}$\sigma$为：
 \begin{equation}
-	\sigma=\frac{My}{I_z}}
+	\sigma=\frac{My}{I_z}
 \end{equation}
 
 其中$M$是横截面上的弯矩；$I_z$是横截面对中性轴z的惯性矩；$y$为求应力点的纵坐标。
 
 由上式知，当$y$达到最大时，$\sigma$最大，即：
 \begin{equation}
-	\sigma_{max}=\frac{My_{max}}{I_z}}
+	\sigma_{max}=\frac{My_{max}}{I_z}
 \end{equation}
 
 若令$W_z=I_z/y_{max}$，有
 \begin{equation}
-	\sigma_{max}=\frac{M}{W_z}}
+	\sigma_{max}=\frac{M}{W_z}
 \label{wz}
 \end{equation}
 
 $W_z$被称为\textcolor{cyan}{弯曲截面系数}，同扭转截面系数一样，鼠鼠还是觉得可以先背矩形和圆的惯性矩，即公式\ref{jg}、\ref{yg}，分别除去$h/2$、$D/2$即可得到$W_z$。
 
-弯曲正应力强度条件即为最大工作正应力$\sigma_{max}$不得超过材料的需用弯曲正应力$\left[\sigma\right]$，即$\sigma_{max}\leqslant\left[\sigma\right] $，由公式\ref{wz}得：
+弯曲正应力强度条件即为最大工作正应力$\sigma_{max}$不得超过材料的许用弯曲正应力$\left[\sigma\right]$，即$\sigma_{max}\leqslant\left[\sigma\right] $，由公式\ref{wz}得：
 \begin{equation}
-       \frac{M_{max}}{W_z}}\leqslant\left[\sigma\right]
+       \frac{M_{max}}{W_z}\leqslant\left[\sigma\right]
 \end{equation}
 
 \subsection{弯曲切应力及强度条件}
+鼠鼠们请再次做好被薄纱的准备QAQ。如想了解弯曲切应力推导过程，鼠鼠推荐个b站up主@土木光头强的视频，这一节内容的bv号为BV18y4y127BP。
+
+说回正题，本节只需要掌握矩形截面的弯曲切应力的公式及最大式的应用，薄壁圆筒和圆截面公式最好记住（万一考了呢）。如果真想考工字形$\cdots \cdots$就鼠鼠所在的学校来说应该是刻意不想让鼠鼠们及格的节奏。但因为每个学校的情况不同，鼠鼠会把这些公式都列出来。虽然应该不要求掌握但还是要注意下各个符号所代表的含义。
+
+经过一系列的数理证明，得\textcolor{cyan}{矩形截面}等直梁在对称弯曲时横截面上任意一处切应力为：
+\begin{equation}
+	\tau=\frac{F_SS^{\ast}_z}{I_zb}
+\end{equation}
+
+\begin{figure}[htp]%设置figure环境
+	\centering
+	\includegraphics[width =3.5cm ]{jxjm}
+\end{figure}
+
+$F_S$为横截面上的剪力，$I_z$为整个横截面对其中性轴的惯性矩，$S^{\ast}_z$为横截面上距中性轴为$y$的直线以外部分的面积对中性轴的\textcolor{red}{静矩}，$b$为矩形宽度，$\tau$的方向与剪力$F_S$的方向相同。如上图所示：
+
+当弯曲切应力达到最大值时，有：
+\begin{equation}
+	\tau_{max}=\frac{3F_S}{2A}
+\end{equation}
+
+式中，$A=bh$，为矩形截面面积。
+
+\textcolor{cyan}{薄壁环形截面}最大弯曲切应力为：
+\begin{equation}
+		\tau_{max}=2 \frac{F_S}{A}
+\end{equation}
+
+\begin{figure}[htp]%设置figure环境
+	\centering
+	\includegraphics[width =6cm ]{ytwqy}
+\end{figure}
+
+式中，$A=\frac{\pi}{4}\left[(2r_0+\delta)^2-(2r_0-\delta)^2\right]=2\pi r_0\delta$，代表环形截面面积。
+
+\textcolor{cyan}{圆截面}最大弯曲切应力为：
+\begin{equation}
+	\tau_{max}=\frac{4F_S}{3A}
+\end{equation}
+
+\begin{figure}[htp]%设置figure环境
+	\centering
+	\includegraphics[width =4cm ]{cir}
+\end{figure}
+
+式中，$A=\pi d^2/4$，为圆截面面积。
+
+同许用弯曲正应力一样，弯曲切应力的强度条件为最大弯曲切应力不得超过于许用弯曲切应力，即$\tau_{max}\leqslant\left[\tau\right]$。
+
+\newpage
+
+\section{第五章：梁弯曲时的位移}
+这章$\cdots \cdots$鼠鼠尽自己最大所能整理点东西吧。
+
+\subsection{挠度及转角}
+先上图：
+\begin{figure}[htp]%设置figure环境
+	\centering
+	\includegraphics[width =8cm ]{nd}
+\end{figure}
+
+横截面形心（即轴线上的点）在垂直于$x$轴方向的线位移$\omega$,称为该截面的\textcolor{cyan}{挠度}；横截面对其原来位置的角位移$\theta$, 称为该截面的\textcolor{cyan}{转角}。梁变形后的轴线称为\textcolor{cyan}{挠曲线}，建个系挠曲线便摇身一变变成
+\textcolor{cyan}{挠曲线方程}。挠曲线方程对$x$的一阶导数即为
+\textcolor{cyan}{转角方程}$\theta$。
+
+\subsection{挠曲线的近似微分方程及其积分}
+看到“近似”两字没有？和弯曲应力里的公式一样，下面提到的公式也是由特殊条件通过数理过程严格证明，但是在工程实践中误差很小，故可以用来计算一般情况。
+
+\textcolor{cyan}{挠曲线的近似微分方程}为：
+\begin{equation}
+\omega''=-\frac{M(x)}{EI}
+\end{equation}
+
+由上式知，这是挠曲线方程的二阶导数。若想得到挠曲线方程需将上式积两次分。一般我们使用下面的变形式进行积分：
+\begin{equation}
+EI\omega''=-M(x)
+\label{nbx}
+\end{equation}
+
+积一次得$\omega'$，又因为挠曲线方程对$x$的一阶导数即为转角方程$\theta$，可由此得转角方程。每次积分后都会出现常数，两次积分出现两次常数。但我们可以通过梁挠曲线的边界条件列方程得出常数大小，如固定端处挠度和转角均等于零等。
+
+\textcolor{cyan}{叠加原理}梁在几项荷载（如集中力、集中力偶或分布力）同时作用下某一横截面的挠度或转角，就分别等于每项荷载单独作用下该截面的挠度或转角的叠加。就提一嘴，只能希望别考难题$\cdots\cdots$
+
+梁的\textcolor{cyan}{刚度条件}可表达为：
+\begin{equation}
+\begin{cases}
+	\frac{\omega_{max}}{l}\leqslant\left[\frac{\omega}{l}\right]\\
+	\theta_{max}\leqslant\left[\theta\right]
+\end{cases}
+\end{equation}
+
+\subsection{弯曲应变能}
+直接给出全梁的弯曲应变能公式为：
+\begin{equation}
+V_{\varepsilon}=\int_l \frac{M^2(x)}{2EI}dx
+\end{equation}
+
+由公式\ref{nbx}知，上式可写作
+\begin{equation}
+	V_{\varepsilon}=\frac{EI}{2}\int_l (\omega'')^2dx
+\end{equation}
+
+\newpage
+
+\section{第六章：简单的超静定问题}
+超静定问题简单来说就是仅通过静力学方程解决不了的问题，怎么解？加方程！从期末考试的角度来看本章仅需掌握拉压超静定问题，而所附加的方程被称作变形几何相容方程。拉压超静定的变形几何相容方程就两个方面：胡克定律和几何关系。由于没有特别的公式，鼠鼠就不在细嗦，把课本上的两个例题弄懂即可。来小亮给他整个活，草！走！忽略！
+
+\section{第七章：应力状态和强度理论}
+这一章算是对前面所学的所有关于应力知识的归一，重点是平面应力状态的几个公式和广义胡克定律。空间应力状态和四大强度理论要有所了解。
+
+\subsection{斜截面上的应力及应力圆}
+若单元体有一对平面上的应力等于零，即不等于零的应力分量均处于同一坐标平面内，则称为\textcolor{cyan}{平面应力状态}。一般用如下图所示的小单元体来表示平面应力状态。
+ \begin{figure}[htp]%设置figure环境
+ 	\centering
+ 	\includegraphics[width =9cm ]{pmyl}
+ \end{figure}
+
+接下来所有的公式都是基于平面应力状态的前提进行推导的。
+
+首先再次明确各物理量的\textcolor{red}{符号规定}：
+\begin{table}[h]
+	\centering
+	\begin{tblr}{|c|c|}%好好看看tabularray是怎么用的
+		\hline
+		 方位角$\alpha$& 以x轴正方向为基准，逆时针转向为正，顺时针为负\\
+		\hline
+		正应力$\sigma$ & 拉应力为正，压应力为负\\
+		\hline
+		切应力$\tau$	& 以与x轴垂直的切应力为基准，对单元体内点的矩为顺时针为正，反之为负。\\
+		\hline
+	\end{tblr}
+\end{table}
+
+由平衡公式推导得任意$\alpha$截面上的应力分量为；
+\begin{gather}
+	\sigma_{\alpha}=\frac{\sigma_x+\sigma_y}{2}+\frac{\sigma_x-\sigma_y}cos2\alpha-\tau_xsin2\alpha \label{1}\\
+	\tau_{\alpha}=\frac{\sigma_x-\sigma_y}{2}sin2\alpha+\tau_xcos2\alpha \label{2}
+\end{gather}
+
+由公式\ref{1}、\ref{2}可得：
+\begin{equation}
+	\left(\sigma_{\alpha}-\frac{\sigma_x+\sigma_y}{2}\right)^2+\tau_{\alpha}^2=\left(\frac{\sigma_x-\sigma_y}{2}\right)^2+\tau_x^2
+\end{equation}
+
+这个方程在$\sigma-\tau$直角坐标系内的轨迹是一个圆，其圆心位于$\sigma$轴上，横坐标为$\frac{\sigma_x+\sigma_y}{2}$，半径为$\sqrt{\left(\frac{\sigma_x-\sigma_y}{2}\right)^2+\tau_x^2}$，该圆习惯上被称为\textcolor{cyan}{应力圆}，如图所示：
+ \begin{figure}[htp]%设置figure环境
+	\centering
+	\includegraphics[width =11cm ]{yly}
+\end{figure}
+
+怎么用好应力圆捏？先利用已知的应力$\sigma_x$$\tau_x$和$\sigma_y$$\tau_y(=-\tau_x)$标出两点，两点一条直线拉过去就是应力圆的直径。记住应力圆需要转动$2\alpha$才能得到$\alpha$斜截面的情况。
+
+\subsection{主应力与主平面}
+\textcolor{cyan}{主平面}为切应力等于零的截面，而\textcolor{cyan}{主应力}为主平面上的正应力。由定义易得主应力对应应力圆与$\sigma$轴相交处。 而单元体上从$x$平面转到$\sigma_1$主平面的转角$\alpha_0$为顺时针转向，按规定为负值。则由应力圆得：
+\begin{equation}
+	tan(-2\alpha_0)=\frac{\tau_x}{\frac{1}{2}(\sigma_x-\sigma_y)}
+\end{equation}
+
+则方位角为：
+\begin{equation}
+	2\alpha_0=arctan(\frac{-2\tau_x}{\sigma_x-\sigma_y})
+\end{equation}
+
+\subsection{广义胡克定律}
+所谓\textcolor{cyan}{广义胡克定律}就是把横向线应变也纳入纵向线应变的考虑范围。在\textcolor{red}{平面应力状态}下的广义胡克定律为：
+\begin{figure}[htp]%设置figure环境
+	\centering
+	\includegraphics[width =4cm ]{gyhk}
+\end{figure}
+
+\begin{equation}
+\begin{aligned}
+	\varepsilon_x=\frac{1}{E}(\sigma_x-\nu\sigma_y)\\
+	\varepsilon_y=\frac{1}{E}(\sigma_y-\nu\sigma_x)\\
+	\varepsilon_z=-\frac{\nu}{E}(\sigma_x+\sigma_y)\\
+	\gamma_{xy}=\frac{1}{G}\tau_{xy}
+\end{aligned}
+\end{equation}
+
+若已知\textcolor{red}{平面应力状态}下两个主应力$\sigma_1$、$\sigma_2$，得：
+
+\begin{equation}
+	\begin{aligned}
+	\varepsilon_1=\frac{1}{E}(\sigma_1-\nu\sigma_2)\\
+	\varepsilon_2=\frac{1}{E}(\sigma_2-\nu\sigma_1)\\
+	\varepsilon_3=-\frac{\nu}{E}(\sigma_1+\sigma_2)
+	\end{aligned}
+\end{equation}
+
+\subsection{四大强度理论}
+如下表所示，了解即可：
+\begin{table}[h]
+	\centering
+	\begin{tblr}{|c|c|c|}%好好看看tabularray是怎么用的
+		\hline
+		第一强度理论& 最大拉应力理论 & $\sigma_1\leqslant\left[\sigma\right]$\\
+		\hline
+		第二强度理论 & 最大伸长线应变理论 & $\sigma_1-\nu(\sigma_2+\sigma_3)\leqslant\left[\sigma\right]$\\
+		\hline
+		第三强度理论	& 最大切应力理论 & $\sigma_1-\sigma_3\leqslant\left[\sigma\right]$\\
+		\hline
+		第四强度理论 & 形状改变能密度理论 &$\sqrt{\frac{1}{2}\left[(\sigma_1-\sigma_2)^2+(\sigma_2-\sigma_3)^2+(\sigma_3-\sigma_1)^2\right]}\leqslant\left[\sigma\right]$\\
+		\hline
+	\end{tblr}
+\end{table}
+
+
+
 
 
 
